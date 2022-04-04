@@ -78,7 +78,7 @@ public class Help extends Command {
         var cmdList = new ArrayList<>(List.of(TextComponent.fromLegacyText(ChatUtils.getPluginPrefix())));
 
         Command.getAllCommandsByCategory(cat).forEach(cmd ->{
-            var message = new ComponentBuilder(cmd.getCommand() + " ");
+            var message = new ComponentBuilder("§7" + cmd.getCommand() + " ");
             var msg = message
                     .event(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "help " + cmd.getCommand()))
                     .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("§7Click for more information about §a" + cmd.getCommand())))
