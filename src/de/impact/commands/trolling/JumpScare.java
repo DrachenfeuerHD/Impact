@@ -34,8 +34,8 @@ public class JumpScare extends Command {
 
         for(var i = 0; i < 10; ++i) {
             target.playSound(target.getLocation(), Sound.GHAST_SCREAM, 1F, 2F);
-            target.playSound(target.getLocation(), Sound.ANVIL_LAND, 2.14748365E9F, 0.2F);
-            target.playSound(target.getLocation(), Sound.ARROW_HIT, 2.14748365E9F, 0.2F);
+            target.playSound(target.getLocation(), Sound.ANVIL_LAND, 2.14F, 0.2F);
+            target.playSound(target.getLocation(), Sound.ARROW_HIT, 2.14F, 0.2F);
             target.playSound(target.getLocation(), Sound.AMBIENCE_THUNDER, 1.0F, 0.2F);
         }
 
