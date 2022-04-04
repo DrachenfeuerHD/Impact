@@ -18,13 +18,11 @@ public class TimerUtils {
         Reflections reflections = new Reflections("de.impact.commands");
         Set<Class<? extends TickTimer>> classes = reflections.getSubTypesOf(TickTimer.class);
 
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), () -> {
-            classes.forEach(clazz -> {
-                try {
-                    clazz.newInstance().onTick();
-                } catch (Exception ignored) {}
-            });
-        }, 0L, 1L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), () -> classes.forEach(clazz -> {
+            try {
+                clazz.newInstance().onTick();
+            } catch (Exception ignored) {}
+        }), 0L, 1L);
 
     }
 
