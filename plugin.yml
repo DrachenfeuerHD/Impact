@@ -1,6 +1,0 @@
-name: Impact
-version: 1.0
-main: de.impact.main.Main
-author: DontBlameMe
-description: Impact-Free
-load: STARTUP
