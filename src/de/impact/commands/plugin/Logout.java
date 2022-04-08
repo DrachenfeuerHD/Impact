@@ -16,6 +16,7 @@ public class Logout extends Command implements Listener {
     public void onChat(String[] aliases, Player p) {
 
         UserUtils.logout(p.getUniqueId());
+        ChatUtils.sendMessage(p, "You are now logged out");
 
     }
 
