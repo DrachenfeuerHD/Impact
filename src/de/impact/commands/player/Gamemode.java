@@ -36,14 +36,19 @@ public class Gamemode extends Command {
         switch (aliases[0]) {
             case "0":
                 changeGameMode(target, p, GameMode.SURVIVAL);
+                break;
             case "1":
                 changeGameMode(target, p, GameMode.CREATIVE);
+                break;
             case "2":
                 changeGameMode(target, p, GameMode.ADVENTURE);
+                break;
             case "3":
                 changeGameMode(target, p, GameMode.SPECTATOR);
+                break;
             default:
                 ChatUtils.sendMessage(p, "Please use " + getUsage());
+                break;
         }
     }
 
