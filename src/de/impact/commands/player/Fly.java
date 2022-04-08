@@ -17,8 +17,10 @@ public class Fly extends Command {
     public void onChat(String[] aliases, Player p) {
 
         if(aliases.length < 1) {
-            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> p.setAllowFlight(!p.getAllowFlight()));
-            ChatUtils.sendMessage(p, "§aYou §7" + (p.getAllowFlight() ? "can fly now" : "can no longer fly"));
+            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> {
+                p.setAllowFlight(!p.getAllowFlight());
+                ChatUtils.sendMessage(p, "§aYou §7" + (p.getAllowFlight() ? "can fly now" : "can no longer fly"));
+            });
             return;
         }
 
@@ -29,8 +31,10 @@ public class Fly extends Command {
             return;
         }
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> target.setAllowFlight(!target.getAllowFlight()));
-        ChatUtils.sendMessage(p, "§a"+target.getName() + " §7" + (target.getAllowFlight() ? "can fly now" : "can no longer fly"));
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> {
+            target.setAllowFlight(!target.getAllowFlight());
+            ChatUtils.sendMessage(p, "§a"+target.getName() + " §7" + (target.getAllowFlight() ? "can fly now" : "can no longer fly"));
+        });
 
     }
 
