@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 public class Chat extends Command {
 
     public Chat() {
-        super("Chat", "Chat (!User) <Message>", "Send a normal message in chat", CommandCategory.PLUGIN, "C");
+        super("Chat", "Chat (!User) <Message>", "Sends a normal message in chat", CommandCategory.PLUGIN, "C");
     }
 
     @Override
