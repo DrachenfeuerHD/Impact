@@ -1,7 +1,5 @@
 # Impact
 
-# Inactive Project
-
 _This is the free (public) version of Impact._
 
 **If you want to login use the >login command ingame.**
