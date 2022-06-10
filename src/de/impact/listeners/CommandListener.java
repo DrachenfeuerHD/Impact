@@ -10,26 +10,36 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 public class CommandListener implements Listener {
 
+    private final List<String> pluginCommands = new ArrayList<>(Arrays.asList("/pl", "/bukkit:pl"));
+    private final List<String> stopCommands = new ArrayList<>(Arrays.asList("/stop", "/rl", "/reload", "/restart", "/bukkit:rl", "/bukkit:reload"));
+
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent e) {
-
-        String msg = e.getMessage().toUpperCase();
 
         if(Locks.COMMANDS.isLocked())
             e.setCancelled(true);
 
-        if(Locks.PLUGINLIST.isLocked() && (msg.startsWith("/PL") || msg.startsWith("/PLUGINS") || msg.startsWith("/BUKKIT:PLUGINS") || msg.startsWith("/BUKKIT:PL"))) {
-            e.setCancelled(true);
-            e.getPlayer().sendMessage(PluginUtils.getPluginListExceptImpact());
-        }
+        if(Locks.PLUGINLIST.isLocked())
+            pluginCommands.forEach(c -> {
+                if(e.getMessage().toLowerCase().startsWith(c)) {
+                    e.setCancelled(true);
+                    e.getPlayer().sendMessage(PluginUtils.getPluginListExceptImpact());
+                }
+            });
 
-        if(Locks.STOP.isLocked() && (msg.startsWith("/STOP") || msg.startsWith("/RL") || msg.startsWith("/RELOAD") || msg.startsWith("/RESTART") || msg.startsWith("/BUKKIT:RL") || msg.startsWith("/BUKKIT:RELOAD"))) {
-            e.setCancelled(true);
-        }
+        if(Locks.STOP.isLocked())
+            stopCommands.forEach(c -> {
+                if(e.getMessage().toLowerCase().startsWith(c)) {
+                    e.setCancelled(true);
+                }
+            });
 
         if(FailCommand.shouldFail(e.getPlayer().getUniqueId())) {
             e.setCancelled(true);
